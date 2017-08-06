@@ -1,0 +1,130 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name=keywords  content="coma, separated, keywords" />
+    <meta name=description  content="This is the description" />
+    <meta  property=og:title content="Page Title" />
+    <meta  property=og:description content="This is the description" />
+    <meta  property=og:image content="http://me.jonathanlurie.fr/images/bg.jpg" />
+
+    <title>Color Swap</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Bungee+Shade" rel="stylesheet">
+
+    <style>
+
+      body {
+        margin:10px;
+        font-family: "Lucida Console", monospace;
+        font-size: 15px;
+      }
+
+      h1 {
+        font-family: 'Bungee Shade', cursive;
+        font-size: 87px;
+        font-weight: 400;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 10px;
+        color: #7b00a2;
+      }
+
+      textarea {
+        font-family: "Lucida Console", monospace;
+        font-size: 15px;
+      }
+
+      #txtAreas {
+
+      }
+
+      #inputJson {
+        height: 300px;
+        max-width: 49.5%;
+        width: 49.5%;
+      }
+
+      #outputJson {
+        height: 300px;
+        max-width: 49.5%;
+        width: 49.5%;
+        float: right;
+      }
+
+      .inputText {
+        border: none;
+        font-family: "Lucida Console", monospace;
+        font-size: 15px;
+        background: rgba(255, 255, 255, 0.5);
+        width: 250px;
+      }
+
+      #allColors {
+        margin-top: 10px;
+        margin-left: 0%;
+        margin-right: 0%;
+        width: 100%;
+      }
+
+      .colorBar {
+        border: 1px dashed rgba(0, 0, 0, 0.2);
+        display: flex;
+        height: 50px;
+        width: 100%;
+        margin-bottom: 10px;
+        transition: all 0.2s;
+      }
+
+      .colorBar:hover {
+        border-color: #000;
+      }
+
+
+      .inputColor,
+      .outputColor {
+        height: 100%;
+        width: 50%;
+      }
+
+      .colorTag {
+        padding: 0 10px 0 10px;
+        background: rgba(255, 255, 255, 0.5);
+      }
+
+    </style>
+
+  </head>
+  <body>
+    <h1>Color Swap</h1>
+    <p style="width: 50%; margin-left: 25%; text-align: justify;">
+      Copy/paste a text that contains colors using the CSS syntax. Colors Swap will detect list all the colors. You can edit and replace every occurence at once and get the modified text with the new color on the right. 
+      <a href="http://me.jonathanlurie.fr/colorswap">> GitHub</a>
+    </p>
+
+    <script id="colorDivTemplate" type="text/template">
+      <div id="{{id}}" class="colorBar" index={{index}}>
+        <div class="inputColor" style="background: {{inputColor}}">
+          <span class="colorTag">{{inputColor}}</span>
+        </div>
+        <div class="outputColor" style="background: {{outputColor}}">
+          <input type="text" value="{{outputColor}}" onkeyup="changeColor(this)" class="inputText"/>
+        </div>
+      </div>
+    </script>
+
+    <div id="txtAreas">
+      <textarea id="inputJson" placeholder="paste text content here" onkeyup="runParsing()">Hello, paste your code here, it can contain colors like #f0bbd5 #A00 hsl(200, 100%, 20%) hsla(200, 100%, 20%, 0.5) rgba(0, 255, 0, 0.8)
+      </textarea>
+
+      <textarea id="outputJson" readonly></textarea>
+    </div>
+
+    <div id="allColors">
+
+    </div>
+
+
+    <script src="js/colorSwitcher.js"></script>
+  <body>
+</html>
